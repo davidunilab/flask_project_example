@@ -1,16 +1,30 @@
-# This is a sample Python script.
+# pip install -r requirements.txt # install
+# pip freeze > requirements.txt # create file
+from flask import Flask
+from flask_restful import Resource, Api
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+app = Flask(__name__)
+api = Api(app)
 
 
-# Press the green button in the gutter to run the script.
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
+
+    def post(self, name):
+        return {"name": name}
+
+    def put(self, name):
+        return {"name": name}
+
+    def delete(self, name):
+        return {"name": name}
+
+
+api.add_resource(HelloWorld, '/read', endpoint="get")
+api.add_resource(HelloWorld, '/save/<string:name>', endpoint="post")
+# api.add_resource(HelloWorld, '/edit/<string:name>', endpoint="put")
+# api.add_resource(HelloWorld, '/remove/<string:name>', endpoint="delete")
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-
+    app.run(debug=True)
