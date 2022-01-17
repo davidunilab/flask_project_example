@@ -27,4 +27,4 @@ api.add_resource(HelloWorld, '/save/<string:name>', endpoint="post")
 # api.add_resource(HelloWorld, '/remove/<string:name>', endpoint="delete")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
