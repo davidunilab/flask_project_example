@@ -24,5 +24,8 @@ Install Modules
 pip install -r requirements.txt
 ```
 
-
+Create Database and insert data
+```bash
+python migrate.py
+```
 
